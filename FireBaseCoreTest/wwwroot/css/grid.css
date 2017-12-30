@@ -1,0 +1,31 @@
+﻿.row{
+    margin:0px;
+}
+
+.container {
+    margin-top:55px;
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    grid-template-areas: "header header" "sidebar content";
+}
+
+.newUserRow
+{
+    margin:10px;
+
+}
+
+.chat-head {
+    grid-area: header;
+    border: 1px solid black;
+}
+
+.content {
+    grid-area: content;
+    border: 1px solid black;
+}
+
+.sidebar {
+    grid-area: sidebar;
+    border: 1px solid black;
+}

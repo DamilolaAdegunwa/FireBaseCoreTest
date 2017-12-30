@@ -1,0 +1,55 @@
+﻿
+@{
+    ViewData["Title"] = "Chat";
+}
+<link rel="stylesheet" href="~/css/grid.css" />
+
+@section Scripts {
+    <script src="https://www.gstatic.com/firebasejs/4.8.1/firebase.js"></script>
+}
+ 
+
+<div class="row">
+    <div class="container">
+        <div class="chat-head">
+            Welcome to the chat
+        </div>
+
+        <div class="sidebar">
+            <h3>Users</h3>
+
+            <ul class="users"></ul>
+
+            <div class=" newUserRow" style="display:none;">
+                <div class="">
+                    <h3>Insert user name</h3>
+                    <label class="welcomeText"></label>
+                    <input type="text" class="userNaem" placeholder="user name" style="width:200px;" />
+                </div>
+                <div class="">
+                    <button type="button" class="btn btn-success saveUser">Save</button>
+                </div>
+            </div>
+
+            <button type="button" class="btn btn-success addUser">Add User</button>
+        </div>
+
+        <div class="content">
+            <h3>Chat</h3>
+            <div class="row">
+                <div class="col-md-9">
+                    <input type="text" class="text" placeholder="text..." style="width:400px;" />
+                </div>
+                <div class="col-md-3">
+                    <button type="button" class="btn btn-success postText">Post</button>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-11 fullChat" style="border: 1px solid black;">
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</div>
