@@ -2,7 +2,10 @@
 using Firebase.Database;
 using Firebase.Database.Query;
 using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
+using System.Reactive.Linq;
+using System.Linq;
 
 namespace FireSharp
 {
@@ -22,12 +25,9 @@ namespace FireSharp
                     //    storageBucket: "barontest-152eb.appspot.com",
                     //    messagingSenderId: "592512603881"
                     //};
-                    //"conversations"
 
                     var apiKey = "AIzaSyAf3zX8rG4hGfjLQK4Er61bTW7cQjTptgE"; // your app secret
-
                     var firebaseAuthProvider = new FirebaseAuthProvider(new FirebaseConfig(apiKey));
-
                     var auth = await firebaseAuthProvider.SignInAnonymouslyAsync();
 
                     var firebaseClient = new FirebaseClient(
@@ -37,27 +37,41 @@ namespace FireSharp
                           AuthTokenAsyncFactory = () => Task.FromResult(auth.FirebaseToken.ToString())
                       });
 
+                    var users = firebaseClient.Child("users_list");
+                    var usersCollection = await users
+                    .OrderByKey()
+                    .LimitToFirst(1)
+                    .OnceAsync<UserNode>();
+                    var user = usersCollection.ToList().First();
+
+
                     var conversations = firebaseClient.Child("conversations");
+
+                    var conversationsHistory = new Dictionary<string, ConverstionNode>();
 
                     var conversationsList = await conversations
                       .OrderByKey()
-                      .LimitToFirst(2)
                       .OnceAsync<ConverstionNode>();
 
                     foreach (var conversation in conversationsList)
                     {
                         Console.WriteLine($"{conversation.Key} is {conversation.Object.ToString()}");
+                        conversationsHistory.Add(conversation.Key, conversation.Object);
                     }
 
 
-                    //// add new item to list of data and let the client generate new key for you (done offline)
-                    //var dino = await firebase
-                    //  .Child("dinosaurs")
-                    //  .PostAsync(new Dinosaur());
+                    // add new item to list of data and let the client generate new key for you (done offline)
+                    var newNode = await conversations.PostAsync(new ConverstionNode
+                    {
+                        date = DateTime.Now.ToString("dd/MM/yyyy HH:mm"),
+                        username = user.Object.name,
+                        text = $"hello {DateTime.Now.Ticks}"
 
-                    //// note that there is another overload for the PostAsync method which delegates the new key generation to the firebase server
+                    });
 
-                    //Console.WriteLine($"Key for the new dinosaur: {dino.Key}");
+                    var obs = conversations.AsObservable<ConverstionNode>();
+                    obs.Where(c => !conversationsHistory.ContainsKey(c.Key))
+                    .Subscribe(f => Console.WriteLine($"after {f.Key}: {f.Object.ToString()}"));
 
                     //// add new item directly to the specified location (this will overwrite whatever data already exists at that location)
                     //await firebase
@@ -89,5 +103,11 @@ namespace FireSharp
         public string date { get; set; }
 
         public override string ToString() => $"{username}:{text} [{date}]";
+    }
+
+    public class UserNode
+    {
+        public int id { get; set; }
+        public string name { get; set; }
     }
 }
