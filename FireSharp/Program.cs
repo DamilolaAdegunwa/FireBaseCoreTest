@@ -65,13 +65,13 @@ namespace FireSharp
                     {
                         date = DateTime.Now.ToString("dd/MM/yyyy HH:mm"),
                         username = user.Object.name,
-                        text = $"hello {DateTime.Now.Ticks}"
+                        text = $"hello to the first userP {user.Object.name} [{DateTime.Now.Ticks}]"
 
                     });
 
                     var obs = conversations.AsObservable<ConverstionNode>();
                     obs.Where(c => !conversationsHistory.ContainsKey(c.Key))
-                    .Subscribe(f => Console.WriteLine($"after {f.Key}: {f.Object.ToString()}"));
+                    .Subscribe(f => Console.WriteLine($"after insert: {f.Key}: {f.Object.ToString()}"));
 
                     //// add new item directly to the specified location (this will overwrite whatever data already exists at that location)
                     //await firebase

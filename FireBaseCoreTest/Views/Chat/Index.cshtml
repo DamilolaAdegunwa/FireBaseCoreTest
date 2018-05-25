@@ -7,12 +7,15 @@
 @section Scripts {
     <script src="https://www.gstatic.com/firebasejs/4.8.1/firebase.js"></script>
 }
- 
+
 
 <div class="row">
     <div class="container">
         <div class="chat-head">
-            Welcome to the chat
+            <label class="label-primary">
+                Welcome to the chat: 
+                <span class="welcomeText"></span>
+            </label>
         </div>
 
         <div class="sidebar">
@@ -23,7 +26,7 @@
             <div class=" newUserRow" style="display:none;">
                 <div class="">
                     <h3>Insert user name</h3>
-                    <label class="welcomeText"></label>
+
                     <input type="text" class="userNaem" placeholder="user name" style="width:200px;" />
                 </div>
                 <div class="">
@@ -31,7 +34,7 @@
                 </div>
             </div>
 
-            <button type="button" class="btn btn-success addUser">Add User</button>
+            <button type="button" class="btn btn-success addUser" disabled>Add User</button>
         </div>
 
         <div class="content">
@@ -41,7 +44,7 @@
                     <input type="text" class="text" placeholder="text..." style="width:400px;" />
                 </div>
                 <div class="col-md-3">
-                    <button type="button" class="btn btn-success postText">Post</button>
+                    <button type="button" class="btn btn-success postText" disabled>Post</button>
                 </div>
             </div>
             <div class="row">

@@ -1,18 +1,16 @@
-﻿.row{
-    margin:0px;
+﻿.row {
+    margin: 0px;
 }
 
 .container {
-    margin-top:55px;
+    margin-top: 55px;
     display: grid;
     grid-template-columns: 1fr 3fr;
     grid-template-areas: "header header" "sidebar content";
 }
 
-.newUserRow
-{
-    margin:10px;
-
+.newUserRow {
+    margin: 10px;
 }
 
 .chat-head {
@@ -29,3 +27,9 @@
     grid-area: sidebar;
     border: 1px solid black;
 }
+
+
+.userItem {
+    cursor: pointer;
+}
+
