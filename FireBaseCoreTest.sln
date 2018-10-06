@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FireSharp", "FireSharp\Fire
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FireSharpNotify", "FireSharpNotify\FireSharpNotify.csproj", "{2A8425FD-6911-4F69-B8A3-9B5CD31B0DC0}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Demo.FireSharp", "Demo.FireSharp\Demo.FireSharp.csproj", "{4D7CE0DC-652E-49CB-B96D-1B05DEFBC2A4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{2A8425FD-6911-4F69-B8A3-9B5CD31B0DC0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2A8425FD-6911-4F69-B8A3-9B5CD31B0DC0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2A8425FD-6911-4F69-B8A3-9B5CD31B0DC0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4D7CE0DC-652E-49CB-B96D-1B05DEFBC2A4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4D7CE0DC-652E-49CB-B96D-1B05DEFBC2A4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4D7CE0DC-652E-49CB-B96D-1B05DEFBC2A4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4D7CE0DC-652E-49CB-B96D-1B05DEFBC2A4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

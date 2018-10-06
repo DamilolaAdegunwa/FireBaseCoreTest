@@ -43,7 +43,7 @@ namespace FireBaseCoreTest
             {
                 routes.MapRoute(
                     name: "default",
-                    template: "{controller=Chat}/{action=Index}/{id?}");
+                    template: "{controller=Home}/{action=Contact}/{id?}");
             });
         }
     }
